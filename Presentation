@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trauma and Healing in Rupi Kaur's Milk and Honey</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --bg-dark: #0e2b28;
+      --bg-card: #143935;
+      --bg-card-soft: #16443e;
+      --accent: #f2c27b;
+      --accent-soft: rgba(242, 194, 123, 0.1);
+      --text-main: #f5f2e9;
+      --text-muted: #c6d2cd;
+      --danger: #e46565;
+      --transition-fast: 0.25s ease;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.45);
+      --radius-big: 26px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      scroll-behavior: smooth;
+      font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-main);
+      background: radial-gradient(circle at top left, #1c584e 0, #071817 45%, #020807 100%);
+      overflow-x: hidden;
+    }
+
+    body {
+      position: relative;
+    }
+
+    /* Scroll snapping to give slide feel */
+    main {
+      scroll-snap-type: y mandatory;
+      height: 100vh;
+      overflow-y: scroll;
+    }
+
+    section.slide {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      padding: 80px 9vw 60px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      isolation: isolate;
+    }
+
+    /* Soft floral overlay (abstract) */
+    section.slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(255, 198, 147, 0.12) 0, transparent 45%),
+        radial-gradient(circle at 90% 80%, rgba(146, 214, 188, 0.1) 0, transparent 50%);
+      mix-blend-mode: screen;
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .slide-inner {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 0.04em;
+    }
+
+    h1.title {
+      font-size: clamp(2.4rem, 3.1vw, 3.4rem);
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    h2.section-title {
+      font-size: clamp(2rem, 2.4vw, 2.7rem);
+      margin-bottom: 0.6rem;
+      color: var(--accent);
+    }
+
+    .subtitle {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .meta {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: start;
+      margin-top: 1.8rem;
+    }
+
+    .content-card {
+      background: radial-gradient(circle at top left, #205348 0, #14302b 45%, #0c201d 100%);
+      border-radius: var(--radius-big);
+      padding: 22px 24px;
+      border: 1px solid rgba(226, 208, 173, 0.15);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        border-color var(--transition-fast), background 0.35s ease;
+      cursor: default;
+    }
+
+    /* Highlight on hover */
+    .content-card:hover {
+      transform: translateY(-8px) scale(1.01);
+      border-color: var(--accent);
+      background: radial-gradient(circle at top left, #276b5d 0, #143935 50%, #0b231f 100%);
+      box-shadow: 0 20px 55px rgba(0, 0, 0, 0.75);
+    }
+
+    .content-card .card-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      opacity: 0.9;
+      margin-bottom: 0.4rem;
+    }
+
+    .content-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .content-card p {
+      font-size: 0.96rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    .grid-2, .grid-3, .grid-4 {
+      display: grid;
+      gap: 18px;
+      margin-top: 1.2rem;
+    }
+
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+
+    ul.bullets {
+      margin-top: 0.4rem;
+      padding-left: 1.1rem;
+      color: var(--text-muted);
+      font-size: 0.96rem;
+      line-height: 1.6;
+    }
+
+    ul.bullets li + li {
+      margin-top: 0.15rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      background: rgba(7, 41, 38, 0.85);
+      border: 1px solid rgba(242, 194, 123, 0.3);
+      color: var(--accent);
+      margin-top: 0.15rem;
+    }
+
+    .pill span {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .timeline-bar {
+      margin-top: 1.4rem;
+      background: rgba(10, 40, 37, 0.9);
+      border-radius: 999px;
+      padding: 12px 18px;
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      border: 1px solid rgba(179, 209, 189, 0.4);
+    }
+
+    .timeline-phase {
+      white-space: nowrap;
+      font-size: 0.8rem;
+      padding: 6px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(242, 194, 123, 0.5);
+      background: rgba(242, 194, 123, 0.08);
+      position: relative;
+    }
+
+    .timeline-phase::before {
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      transform: translateY(-50%);
+    }
+
+    .timeline-phase span {
+      margin-left: 12px;
+      opacity: 0.85;
+    }
+
+    /* Top nav */
+    .top-bar {
+      position: fixed;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(4, 21, 20, 0.92);
+      border: 1px solid rgba(206, 199, 181, 0.35);
+      backdrop-filter: blur(16px);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 50;
+    }
+
+    .top-bar .brand-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(242, 194, 123, 0.9);
+    }
+
+    .top-bar span {
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* Side navigation dots */
+    .side-nav {
+      position: fixed;
+      top: 50%;
+      right: 34px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 40;
+    }
+
+    .nav-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1px solid rgba(199, 215, 206, 0.55);
+      background: rgba(9, 37, 34, 0.9);
+      cursor: pointer;
+      position: relative;
+      transition: transform var(--transition-fast), background var(--transition-fast),
+        border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .nav-dot::after {
+      content: attr(data-label);
+      position: absolute;
+      right: 160%;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      white-space: nowrap;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(4, 21, 20, 0.95);
+      border: 1px solid rgba(228, 214, 187, 0.3);
+      color: var(--text-muted);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .nav-dot:hover::after {
+      opacity: 1;
+      transform: translate(-3px, -50%);
+    }
+
+    .nav-dot.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: scale(1.2);
+      box-shadow: 0 0 16px rgba(242, 194, 123, 0.9);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(242, 194, 123, 0.8);
+      background: radial-gradient(circle at top left, #f2c27b 0, #c18b4a 32%, #5f3c17 100%);
+      color: #1b130a;
+      font-size: 0.82rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.65);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        filter var(--transition-fast);
+    }
+
+    .btn span.icon {
+      font-size: 1rem;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 42px rgba(0, 0, 0, 0.85);
+      filter: brightness(1.04);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--accent);
+      border-color: rgba(242, 194, 123, 0.6);
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    }
+
+    .btn-outline:hover {
+      background: rgba(242, 194, 123, 0.09);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.65);
+    }
+
+    /* Popup modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.25s ease;
+      z-index: 70;
+    }
+
+    .modal-backdrop.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      width: min(520px, 90vw);
+      background: radial-gradient(circle at top left, #215047 0, #102a27 45%, #060e0d 100%);
+      border-radius: 30px;
+      padding: 24px 26px;
+      border: 1px solid rgba(242, 194, 123, 0.55);
+      box-shadow: 0 26px 68px rgba(0, 0, 0, 0.9);
+      transform: translateY(12px);
+      opacity: 0;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      position: relative;
+    }
+
+    .modal-backdrop.active .modal {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .modal h3 {
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .modal p {
+      font-size: 0.96rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .modal-close {
+      position: absolute;
+      right: 18px;
+      top: 16px;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 1px solid rgba(242, 194, 123, 0.55);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: 0.8rem;
+      background: rgba(4, 21, 20, 0.85);
+      color: var(--accent);
+    }
+
+    /* Transition popup between slides */
+    .transition-popup {
+      position: fixed;
+      bottom: 26px;
+      left: 50%;
+      transform: translateX(-50%) translateY(120%);
+      background: rgba(7, 30, 28, 0.98);
+      border-radius: 999px;
+      padding: 8px 18px;
+      border: 1px solid rgba(242, 194, 123, 0.4);
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      backdrop-filter: blur(14px);
+      z-index: 60;
+      transition: transform 0.4s ease;
+    }
+
+    .transition-popup.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .transition-popup-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(242, 194, 123, 0.8);
+    }
+
+    /* Scroll-in animation */
+    .animate-in {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .animate-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Expected outcomes keys layout */
+    .key-list {
+      margin-top: 1.4rem;
+      display: grid;
+      gap: 16px;
+    }
+
+    .key-item {
+      display: grid;
+      grid-template-columns: 40px minmax(0, 1fr);
+      gap: 14px;
+      align-items: start;
+    }
+
+    .key-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 18px;
+      background: rgba(10, 40, 37, 0.9);
+      border: 1px solid rgba(160, 203, 183, 0.5);
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      color: var(--accent);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+    }
+
+    .key-item h3 {
+      margin-bottom: 0.2rem;
+      font-size: 1.02rem;
+    }
+
+    .key-item p {
+      font-size: 0.94rem;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      section.slide {
+        padding: 86px 6vw 70px;
+      }
+
+      .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .side-nav {
+        right: 16px;
+      }
+
+      .content-card {
+        padding: 18px 18px;
+        border-radius: 20px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .top-bar {
+        display: none;
+      }
+
+      h1.title {
+        font-size: 1.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating top brand tag -->
+  <div class="top-bar">
+    <div class="brand-dot"></div>
+    <span>Trauma & Healing • Rupi Kaur</span>
+  </div>
+
+  <!-- Side navigation dots -->
+  <nav class="side-nav">
+    <div class="nav-dot active" data-target="slide-1" data-label="Title"></div>
+    <div class="nav-dot" data-target="slide-2" data-label="Introduction"></div>
+    <div class="nav-dot" data-target="slide-3" data-label="Structure"></div>
+    <div class="nav-dot" data-target="slide-4" data-label="Foundations"></div>
+    <div class="nav-dot" data-target="slide-5" data-label="Trauma Theory"></div>
+    <div class="nav-dot" data-target="slide-6" data-label="Feminist Lens"></div>
+    <div class="nav-dot" data-target="slide-7" data-label="Research Gap"></div>
+    <div class="nav-dot" data-target="slide-8" data-label="Objectives"></div>
+    <div class="nav-dot" data-target="slide-9" data-label="Methodology"></div>
+    <div class="nav-dot" data-target="slide-10" data-label="Timeline"></div>
+    <div class="nav-dot" data-target="slide-11" data-label="Outcomes"></div>
+    <div class="nav-dot" data-target="slide-12" data-label="Thank You"></div>
+  </nav>
+
+  <!-- Scroll transition popup -->
+  <div class="transition-popup" id="transitionPopup">
+    <div class="transition-popup-dot"></div>
+    <span id="transitionText">Next: Introduction & Core Themes</span>
+  </div>
+
+  <!-- Modal (generic popup) -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">✕</button>
+      <h3 id="modalTitle">More Detail</h3>
+      <p id="modalBody">
+        This is placeholder content. You can customize the modal text from JavaScript
+        or attach separate modals for different sections.
+      </p>
+    </div>
+  </div>
+
+  <main>
+    <!-- SLIDE 1: TITLE -->
+    <section id="slide-1" class="slide">
+      <div class="slide-inner animate-in">
+        <div class="two-col">
+          <div>
+            <h1 class="title">Trauma and Healing in Rupi Kaur’s <em>Milk and Honey</em></h1>
+            <p class="subtitle">A Psychoanalytical Approach</p>
+            <p class="meta">
+              Submitted to: <strong>Dr. Sukanta Ghosh</strong><br/>
+              Submitted by: <strong>Tannu Shree</strong><br/>
+              Registration No: <strong>12518994</strong>
+            </p>
+
+            <div style="margin-top:1.8rem; display:flex; gap:12px; flex-wrap:wrap;">
+              <button class="btn" data-open-modal="overview">
+                <span class="icon">✦</span>
+                <span>View Research Overview</span>
+              </button>
+              <button class="btn btn-outline" data-scroll-to="slide-2">
+                <span class="icon">↓</span>
+                <span>Enter Presentation</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <div class="card-tag">Visual Mood</div>
+            <h3>Floral, Intimate, Reflective</h3>
+            <p>
+              The design echoes the book’s quiet exploration of pain and recovery:
+              deep forest greens, warm floral highlights, and soft gradients suggest
+              vulnerability, resilience, and slow healing.
+            </p>
+            <ul class="bullets">
+              <li>Dark green base referencing emotional depth.</li>
+              <li>Peach–gold accents for hope and recovery.</li>
+              <li>Rounded cards mirroring Kaur’s minimal aesthetic.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: INTRODUCTION -->
+    <section id="slide-2" class="slide">
+      <div class="slide-inner animate-in">
+        <h2 class="section-title">Introduction</h2>
+        <p class="subtitle">Trauma Studies in Contemporary Literature &amp; Core Themes</p>
+
+        <div class="two-col">
+          <div class="content-card">
+            <div class="card-tag">Context</div>
+            <h3>Trauma Studies in Contemporary Literature</h3>
+            <p>
+              Trauma studies explore how violence, memory, and psychological wounds
+              reshape identity and narrative. Kaur’s <em>Milk and Honey</em> brings these
+              discourses to a global readership through accessible, emotionally resonant poetry.
+            </p>
+          </div>
+          <div class="grid-2">
+            <article class="content-card">
+              <div class="card-tag">Core Theme</div>
+              <h3>Violence &amp; Aftermath</h3>
+              <p>
+                Poems confront intimate violence and its lingering psychological effects,
+                mapping the journey from injury to fragile restoration.
+              </p>
+            </article>
+            <article class="content-card">
+              <div class="card-tag">Core Theme</div>
+              <h3>Memory &amp; Non-linearity</h3>
+              <p>
+                Fragmented, looping memories disrupt linear storytelling, reflecting the
+                lived experience of trauma.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: STRUCTURE OF MILK AND HONEY -->
+    <section id="slide-3" class="slide">
+      <div class="slide-inner animate-in">
+        <h2 class="section-title">Structure of <em>Milk and Honey</em></h2>
+        <p class="subtitle">The Hurt • The Break • The Love • The Healing</p>
+
+        <div class="grid-4">
+          <article class="content-card">
+            <div class="card-tag">Section I</div>
+            <h3>The Hurting</h3>
+            <p>Confronts pain, violence, and the initial wounds of trauma.</p>
+          </article>
+          <article class="content-card">
+            <div class="card-tag">Section II</div>
+            <h3>The Breaking</h3>
+            <p>Explores loss, heartbreak, and the dissolution of relationships.</p>
+          </article>
+          <article class="content-card">
+            <div class="card-tag">Section III</div>
+            <h3>The Loving</h3>
+            <p>Traces desire, tenderness, and complex forms of connection.</p>
+          </article>
+          <article class="content-card">
+            <div class="card-tag">Section IV</div>
+            <h3>The Healing</h3>
+            <p>
+              Reclaims identity and self-love, imagining wholeness after fragmentation.
+            </p>
+          </article>
+        </div>
+
+        <div class="content-card" style="margin-top:1.4rem;">
+          <div class="card-tag">Narrative Logic</div>
+          <h3>Non-Linear Healing</h3>
+          <p>
+            The four-part structure does not chart a simple forward trajectory.
+            Instead, it mirrors the recursive motion of trauma: progress, relapse,
+            and re-narration.
+          </p>
+          <button class="btn btn-outline" data-open-modal="structure">
+            <span class="icon">☼</span>
+            <span>Why Fragmentation Matters</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: PSYCHOANALYTIC FOUNDATIONS -->
+    <section id="slide-4" class="slide">
+      <div class="slide-inner animate-in">
+        <h2 class="section-title">Psychoanalytic Foundations</h2>
+        <p class="subtitle">Freud • Lacan • Kristeva</p>
+
+        <div class="grid-3">
+          <article class="content-card">
+            <div class="card-tag">Freud</div>
+            <h3>Repression &amp; the Unconscious</h3>
+            <ul class="bullets">
+              <li>Repressed memories return symbolically within the poems.</li>
+              <li>Unconscious desires surface through minimal, imagistic language.</li>
+            </ul>
+          </article>
+          <article class="content-card">
+            <div class="card-tag">Lacan</div>
+            <h3>Fragmented Body &amp; Symbolic Order</h3>
+            <ul class="bullets">
+              <li>Shattered, partial bodies echo psychic fragmentation.</li>
+              <li>Language and social structures fracture identity and belonging.</li>
+            </ul>
+          </article>
+          <article class="content-card">
+            <div class="card-tag">Kristeva</div>
+            <h3>Abjection &amp; Reclamation</h3>
+            <ul class="bullets">
+              <li>Poems stage rejection of violating boundaries.</li>
+              <li>Shame and vulnerability become sites of empowerment.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5: TRAUMA THEORY INSIGHTS -->
+    <section id="slide-5" class="slide">
+      <div class="slide-inner animate-in">
+        <h2 class="section-title">Trauma Theory Insights</h2>
+        <p class="subtitle">Understanding Traumatic Experience</p>
+
+        <div class="grid-3">
+          <article class="content-card">
+            <div class="card-tag">Cathy Caruth</div>
+            <h3>Unclaimed Experience</h3>
+            <p>
+              Trauma returns belatedly through flashbacks and repetition. Kaur’s
+              poems often narrate what could not be processed at the time of injury.
+            </p>
+          </article>
+          <article class="content-card">
+            <div class="card-tag">Judith Herman</div>
+            <h3>Safety, Remembrance, Community</h3>
+            <p>
+              The collection traces a movement from violation to safety, narration,
+              and reconnection with others.
+            </p>
+          </article>
+          <article class="content-card">
+            <div class="card-tag">Poetic Expression</div>
+            <h3>Form as Healing</h3>
+            <p>
+              Short, visually sparse poems create white space for reflection,
+              transforming fragmented experience into shareable story.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6: FEMINIST & CULTURAL PERSPECTIVES -->
+    <section id="slide-6" class="slide">
+      <div class="slide-inner animate-in">
+        <h2 class="section-title">Feminist &amp; Cultural Perspectives</h2>
+        <p class="subtitle">Central Feminist Themes &amp; Literary Influences</p>
+
+        <div class="grid-2">
+          <article class="content-card">
+            <div class="card-tag">Central Themes</div>
+            <ul class="bullets">
+              <li><strong>Misogyny:</strong> systemic violence against women.</li>
+              <li><strong>Body Politics:</strong> reclaiming the female body from objectification.</li>
+              <li><strong>Emotional Labour:</strong> unpaid, invisible work in relationships.</li>
+              <li><strong>Intersectionality:</strong> race, gender, and trauma intertwined.</li>
+            </ul>
+          </article>
+          <article class="content-card">
+            <div class="card-tag">Influences</div>
+            <ul class="bullets">
+              <li><strong>bell hooks:</strong> intersectional feminism &amp; love as politics.</li>
+              <li><strong>Audre Lorde:</strong> poetry as self-definition &amp; power.</li>
+              <li><strong>Adrienne Rich:</strong> validating women’s lived experiences.</li>
+            </ul>
+            <button class="btn btn-outline" data-open-modal="instapoetry">
+              <span class="icon">★</span>
+              <span>Instapoetry Revolution</span>
+            </button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7: RESEARCH GAP -->
+    <section id="slide-7" class="slide">
+      <div class="slide-inner animate-in">
+        <h2 class="section-title">Research Gap</h2>
+        <p class="subtitle">Why This Study is Needed</p>
+
+        <div class="grid-2">
+          <article class="content-card">
+            <div class="card-tag">Gap</div>
+            <h3>Limited Psychoanalytic Examination</h3>
+            <p>
+              Despite global popularity, <em>Milk and Honey</em> rarely receives rigorous
+              psychoanalytic readings, especially through Freud, Lacan, or Kristeva.
+            </p>
+            <div class="pill"><span></span> Opportunity for deeper theory</div>
+          </article>
+          <article class="content-card">
+            <div class="card-tag">Gap</div>
+            <h3>Minimal Trauma Theory Application</h3>
+            <p>
+              The collection is central to trauma discourse but seldom analysed using
+              formal trauma theory frameworks.
+            </p>
+            <div class="pill"><span></span> Interdisciplinary potential</div>
+          </article>
+          <article class="content-card">
+            <div class="card-tag">Gap</div>
+            <h3>Neglect of Cultural Impact</h3>
+            <p>
+              The Instapoetry boom is often dismissed as “less literary”, leaving its
+              cultural labour under-theorised.
+            </p>
+          </article>
+          <article class="content-card">
+            <div class="card-tag">Gap</div>
+            <h3>Absence of Intersecting Frameworks</h3>
+            <p>
+              Very few studies weave together trauma, psychoanalysis, and feminist
+              theory in reading Kaur’s work.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 8: RESEARCH OBJECTIVES -->
+    <section id="slide-8" class="slide">
+      <div class="slide-inner animate-in">
+        <h2 class="section-title">Research Objectives</h2>
+        <p class="subtitle">What This Study Seeks to Do</p>
+
+        <div class="grid-3">
+          <article class="content-card">
+            <div class="card-tag">01</div>
+            <h3>Analyse Trauma &amp; Memory</h3>
+            <p>
+              Explore how Kaur represents repression and unconscious memory
+              through symbolic, minimalist language.
+            </p>
+          </article>
+          <article class="content-card">
+            <div class="card-tag">02</div>
+            <h3>Study Poetic Fragmentation</h3>
+            <p>
+              Examine how the structure of <em>Milk and Honey</em> mirrors the disrupted,
+              non-linear logic of trauma.
+            </p>
+          </article>
+          <article class="content-card">
+            <div class="card-tag">03</div>
+            <h3>Examine Healing &amp; Reconstruction</h3>
+            <p>
+              Trace processes of recovery, self-reclamation, and identity rebuilding
+              across the four sections.
+            </p>
+          </article>
+          <article class="content-card">
+            <div class="card-tag">04</div>
+            <h3>Apply Psychoanalytic Theories</h3>
+            <p>
+              Mobilise Freud, Lacan, and Kristeva to read imagery, voice, and
+              narrative gaps.
+            </p>
+          </article>
+          <article class="content-card">
+            <div class="card-tag">05</div>
+            <h3>Situate Within Feminist Trauma Writing</h3>
+            <p>
+              Position the collection within broader feminist literature on gendered
+              violence and empowerment.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 9: METHODOLOGY -->
+    <section id="slide-9" class="slide">
+      <div class="slide-inner animate-in">
+        <h2 class="section-title">Methodology</h2>
+        <p class="subtitle">Qualitative Textual Analysis</p>
+
+        <div class="grid-2">
+          <article class="content-card">
+            <div class="card-tag">Design</div>
+            <h3>Research Design &amp; Primary Text</h3>
+            <ul class="bullets">
+              <li>Close reading of selected poems from <em>Milk and Honey</em>.</li>
+              <li>Attention to imagery, metaphor, structure, and silence.</li>
+              <li>Poems chosen from all four sections to track transformation.</li>
+            </ul>
+          </article>
+          <article class="content-card">
+            <div class="card-tag">Sources</div>
+            <h3>Secondary Sources &amp; Frameworks</h3>
+            <ul class="bullets">
+              <li>Trauma theory (Caruth, Herman).</li>
+              <li>Psychoanalysis (Freud, Lacan, Kristeva).</li>
+              <li>Feminist criticism and Instapoetry scholarship.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 10: TIMELINE -->
+    <section id="slide-10" class="slide">
+      <div class="slide-inner animate-in">
+        <h2 class="section-title">Proposed Timeline</h2>
+        <p class="subtitle">Nov 2025 – Mar 2028</p>
+
+        <div class="content-card">
+          <div class="card-tag">Phases</div>
+          <p>
+            The research is structured into six overlapping phases, allowing time
+            for extended reading, layered analysis, and careful drafting.
+          </p>
+          <div class="timeline-bar">
+            <div class="timeline-phase">Phase 1<span>Preliminary Stage</span></div>
+            <div class="timeline-phase">Phase 2<span>Extended Literature Review</span></div>
+            <div class="timeline-phase">Phase 3<span>Textual Analysis – <em>Never Let Me Go</em></span></div>
+            <div class="timeline-phase">Phase 4<span>Textual Analysis – <em>Klara and the Sun</em></span></div>
+            <div class="timeline-phase">Phase 5<span>Comparative &amp; Theoretical Synthesis</span></div>
+            <div class="timeline-phase">Phase 6<span>Conclusion &amp; Final Drafting</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 11: EXPECTED OUTCOMES -->
+    <section id="slide-11" class="slide">
+      <div class="slide-inner animate-in">
+        <h2 class="section-title">Expected Outcomes</h2>
+        <p class="subtitle">Scholarly &amp; Cultural Contributions</p>
+
+        <div class="content-card">
+          <div class="card-tag">Key Outcomes</div>
+          <div class="key-list">
+            <div class="key-item">
+              <div class="key-icon">✦</div>
+              <div>
+                <h3>Poetic Fragmentation &amp; Memory</h3>
+                <p>
+                  Clarify how Kaur’s fragmented poetics enact the psychological
+                  experience of traumatic memory.
+                </p>
+              </div>
+            </div>
+            <div class="key-item">
+              <div class="key-icon">☉</div>
+              <div>
+                <h3>Symbolic Expression of Repression</h3>
+                <p>
+                  Show how metaphors and recurring images render repressed
+                  trauma visible.
+                </p>
+              </div>
+            </div>
+            <div class="key-item">
+              <div class="key-icon">⌘</div>
+              <div>
+                <h3>Destabilised Identity &amp; Lacanian Reading</h3>
+                <p>
+                  Demonstrate how the collection illuminates fractured subjectivity
+                  within the symbolic order.
+                </p>
+              </div>
+            </div>
+            <div class="key-item">
+              <div class="key-icon">♀</div>
+              <div>
+                <h3>Feminist Significance</h3>
+                <p>
+                  Highlight the collection’s role within feminist trauma literature
+                  and conversations on gendered violence.
+                </p>
+              </div>
+            </div>
+            <div class="key-item">
+              <div class="key-icon">✎</div>
+              <div>
+                <h3>Scholarly Elevation</h3>
+                <p>
+                  Argue for Instapoetry’s capacity to sustain rigorous academic
+                  engagement, not just social media visibility.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 12: THANK YOU -->
+    <section id="slide-12" class="slide">
+      <div class="slide-inner animate-in">
+        <h2 class="section-title">Thank You</h2>
+        <p class="subtitle">Questions &amp; Discussion</p>
+
+        <div class="content-card">
+          <p>
+            I welcome your questions, reflections, and suggestions on this
+            psychoanalytic reading of trauma and healing in Rupi Kaur’s
+            <em>Milk and Honey</em>.
+          </p>
+          <div style="margin-top:1.4rem; display:flex; gap:12px; flex-wrap:wrap;">
+            <button class="btn btn-outline" data-scroll-to="slide-1">
+              <span class="icon">↑</span>
+              <span>Back to Title</span>
+            </button>
+            <button class="btn" data-open-modal="contact">
+              <span class="icon">✉</span>
+              <span>Contact / Acknowledgements</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Smooth scroll via custom buttons
+    document.querySelectorAll("[data-scroll-to]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const targetId = btn.getAttribute("data-scroll-to");
+        const el = document.getElementById(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    });
+
+    // Side nav dot click behaviour
+    const navDots = document.querySelectorAll(".nav-dot");
+    navDots.forEach(dot => {
+      dot.addEventListener("click", () => {
+        const targetId = dot.getAttribute("data-target");
+        const el = document.getElementById(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    });
+
+    // IntersectionObserver: highlight active dot + animate-in
+    const sections = document.querySelectorAll("section.slide");
+    const options = { root: document.querySelector("main"), threshold: 0.55 };
+
+    const popup = document.getElementById("transitionPopup");
+    const popupText = document.getElementById("transitionText");
+    let popupTimeout = null;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const id = entry.target.id;
+        if (entry.isIntersecting) {
+          // animate visible elements
+          entry.target.classList.add("visible");
+          const inner = entry.target.querySelector(".animate-in");
+          if (inner) inner.classList.add("visible");
+
+          // update nav dots
+          navDots.forEach(dot => {
+            dot.classList.toggle("active", dot.getAttribute("data-target") === id);
+          });
+
+          // show tiny transition popup with upcoming slide label
+          const next = entry.target.nextElementSibling;
+          if (next && next.classList.contains("slide")) {
+            const nextId = next.id;
+            const nextDot = [...navDots].find(d => d.getAttribute("data-target") === nextId);
+            if (nextDot) {
+              popupText.textContent = "Next: " + nextDot.getAttribute("data-label");
+              popup.classList.add("show");
+              if (popupTimeout) clearTimeout(popupTimeout);
+              popupTimeout = setTimeout(() => popup.classList.remove("show"), 1800);
+            }
+          }
+        }
+      });
+    }, options);
+
+    sections.forEach(section => observer.observe(section));
+
+    // Modal logic
+    const modalBackdrop = document.getElementById("modalBackdrop");
+    const modalClose = document.getElementById("modalClose");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalBody = document.getElementById("modalBody");
+
+    const modalContent = {
+      overview: {
+        title: "Project Overview",
+        body: "This project offers a psychoanalytical reading of trauma, fragmentation, and healing in Rupi Kaur’s Milk and Honey. It brings together trauma theory, Freudian and Lacanian concepts, and feminist criticism to show how Kaur’s minimalistic poems give language and structure to experiences that often remain unspeakable."
+      },
+      structure: {
+        title: "Why Fragmented Structure Matters",
+        body: "The four-part structure—The Hurting, The Breaking, The Loving, The Healing—resembles stages of trauma and recovery, but the reader never moves smoothly from one to the next. Poems echo, contradict, and repeat. This non-linear design demonstrates how traumatised memory loops back on itself, resisting closure while still making space for gradual healing."
+      },
+      instapoetry: {
+        title: "The Instapoetry Revolution",
+        body: "Through social media circulation, Milk and Honey has brought trauma narratives into everyday digital spaces. While sometimes criticised as “simplistic,” its accessibility allows survivors to encounter complex ideas about violence, consent, and self-worth in an intimate, shareable form, reshaping who gets to participate in literary conversations."
+      },
+      contact: {
+        title: "Contact & Acknowledgements",
+        body: "Thank you for engaging with this work. I am grateful to my supervisor, peers, and readers who have contributed insights along the way. For further discussion or feedback, you can reach me after the session or via the contact details provided with this presentation."
+      }
+    };
+
+    document.querySelectorAll("[data-open-modal]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const key = btn.getAttribute("data-open-modal");
+        if (modalContent[key]) {
+          modalTitle.textContent = modalContent[key].title;
+          modalBody.textContent = modalContent[key].body;
+        } else {
+          modalTitle.textContent = "More Detail";
+          modalBody.textContent = "You can customise this popup’s content in the JavaScript object 'modalContent'.";
+        }
+        modalBackdrop.classList.add("active");
+      });
+    });
+
+    modalClose.addEventListener("click", () => modalBackdrop.classList.remove("active"));
+    modalBackdrop.addEventListener("click", (e) => {
+      if (e.target === modalBackdrop) modalBackdrop.classList.remove("active");
+    });
+
+    // Initial animation for first slide
+    window.addEventListener("load", () => {
+      const first = document.querySelector("#slide-1 .animate-in");
+      if (first) first.classList.add("visible");
+    });
+  </script>
+</body>
+</html>
